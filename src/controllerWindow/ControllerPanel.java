@@ -1,6 +1,5 @@
-package frames;
+package controllerWindow;
 
-import classes.Main;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
@@ -45,7 +44,7 @@ public class ControllerPanel extends JPanel {
 
         exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
         exitButton.setMnemonic('x');
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("frames/Bundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("controllerWindow/Bundle"); // NOI18N
         exitButton.setText(bundle.getString("ControllerPanel.exitButton.text")); // NOI18N
         exitButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         exitButton.setContentAreaFilled(false);
@@ -83,7 +82,7 @@ public class ControllerPanel extends JPanel {
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         
-        Main.controllerWindow.controllerFrame.setLocation(x-xx,y-yy);
+        Main.controllerWindow.setLocation(x-xx,y-yy);
     }//GEN-LAST:event_formMouseDragged
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed

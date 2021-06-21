@@ -1,6 +1,5 @@
-package classes;
+package controllerWindow;
 
-import frames.ControllerPanel;
 import java.io.*;
 import java.net.*;
 import javax.swing.JFrame;
@@ -9,22 +8,16 @@ import javax.swing.JFrame;
  *
  * @author Danny Jimenez
  */
-public class ThreadControllerWindow extends Thread {
+public class ControllerWindow extends JFrame {
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
-    public JFrame controllerFrame = new JFrame("Controller Window");
     public ControllerPanel mainPanel = new ControllerPanel();
-    private static boolean run = true;
     
-    
-    
-
-    public ThreadControllerWindow() {
-        super("ControllerWindow");
+    public ControllerWindow(){
+        super("Controller Window");
         initComponents();
     }
-    
     
     public void startConnection(String ip, int port) throws IOException {
         clientSocket = new Socket(ip, port);
@@ -45,28 +38,13 @@ public class ThreadControllerWindow extends Thread {
     }
     
     public void initComponents(){
-        controllerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        controllerFrame.setContentPane(mainPanel);
-        controllerFrame.setSize(mainPanel.getSize());
-        controllerFrame.setUndecorated(true);
-        controllerFrame.setLocation(5,5);
-        controllerFrame.pack();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(mainPanel);
+        this.setSize(mainPanel.getSize());
+        this.setUndecorated(true);
+        this.setLocation(5,5);
+        this.pack();
         
-    }
-    
-    public void stopFrame(){
-        run = false;
-    }
-    
-    
-    
-    @Override
-    public void run() {
-        controllerFrame.setVisible(true);
-        while(run){
-        }
-        
-    }
-    
+    } 
     
 }

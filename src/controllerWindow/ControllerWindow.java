@@ -12,14 +12,17 @@ import javax.swing.UIManager;
  */
 public class ControllerWindow extends JFrame implements Runnable{
     
+    private ServerSocket serverSocket;
     private Socket controllerWindowSocket;
     private ObjectOutputStream output;
     private ObjectInputStream input;
     public ControllerPanel mainPanel = new ControllerPanel();
     private final String IP = "localhost";
     private final int PORT = 6666;
+    private final int PORT2 = 9000;
     private String message;
     private boolean connected;
+    private Socket client;
     
     public static Thread threadControllerWindow;
     public static ControllerWindow controllerWindow;
@@ -34,13 +37,20 @@ public class ControllerWindow extends JFrame implements Runnable{
     
     public void startConnection() throws IOException, ClassNotFoundException {
         controllerWindowSocket = new Socket(IP, PORT);
+        serverSocket = new ServerSocket(PORT2);
         System.out.println("Conectado a: " + IP + " en el puerto..." + PORT);
         
         
         
     }
+    
+    public void startServer() throws IOException, ClassNotFoundException{
+        client = serverSocket.accept();
+        messageReader();
+        
+    }
     public String messageReader() throws IOException, ClassNotFoundException{
-        input = new ObjectInputStream(controllerWindowSocket.getInputStream());        
+        input = new ObjectInputStream(client.getInputStream());        
         
         try{
             message = (String) input.readObject();
@@ -101,6 +111,7 @@ public class ControllerWindow extends JFrame implements Runnable{
             controllerWindow.setVisible(connected);
             try {
                 controllerWindow.startConnection();
+                controllerWindow.startServer();
                 translater(messageReader());
             } catch (IOException | ClassNotFoundException ex) {
             }

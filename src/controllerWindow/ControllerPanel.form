@@ -39,13 +39,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btnCharge" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCharge" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="title" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
                       <Component id="exitButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="flight4" alignment="0" max="32767" attributes="0"/>
                           <Component id="flight2" alignment="0" pref="0" max="32767" attributes="0"/>
@@ -62,12 +62,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="title" max="32767" attributes="0"/>
-                      <Component id="exitButton" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="btnCharge" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="title" max="32767" attributes="0"/>
+                  <Component id="exitButton" max="32767" attributes="0"/>
+                  <Component id="btnCharge" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="26" max="32767" attributes="0"/>
               <Component id="flight1" min="-2" pref="150" max="-2" attributes="0"/>
@@ -677,10 +675,21 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnCharge">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/chargeW.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="controllerWindow/Bundle.properties" key="ControllerPanel.btnCharge.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
+        <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/charge.png"/>
+        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChargeActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

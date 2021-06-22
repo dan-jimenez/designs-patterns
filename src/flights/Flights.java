@@ -17,15 +17,15 @@ public class Flights extends Thread{
     private ObjectInputStream input;
     private final String IP = "localhost";
     private final int PORT = 6666;
-    private String message;
     private boolean connected;
+    
+    public static Flights threadFlight = new Flights();
 
-    public Flights(Airplane airplane, int stateFlight) {
-        this.airplane = airplane;
-        this.stateFlight = stateFlight;
+    public Flights() {
+       
     }
     
-    public Flights flightGenerator(){
+    public String flightGenerator(){
         int size = (int) Math.floor(Math.random()*(200-130)+130);
         int type = (int) Math.floor(Math.random()*3);
         String name = "Null";
@@ -44,9 +44,8 @@ public class Flights extends Thread{
         
         
         Airplane airplaneRandom = new Airplane(type, size, name);      
-        Flights flight = new Flights(airplaneRandom,1);
         
-        return flight;
+        return name;
     }
     
     
@@ -87,12 +86,19 @@ public class Flights extends Thread{
     }
     
     public static void main(String[] args) {
-        
+        threadFlight.start();
     }
 
     @Override
     public void run() {
-        
+        connected = true;
+        while(connected){
+            try{
+                threadFlight.startConnection();
+            }catch(IOException | ClassNotFoundException e){
+                
+            }
+        }
     }
     
     

@@ -5,38 +5,40 @@ package controller;
  * @author Danny Jimenez
  */
 public class LandingStrip {
-    private double sizeCapacity;
+    private double minimunCapacity;
     private String name;
-    private int airplaneCapacity;
+    private int maximunCapacity;
+    private boolean disponibility;
 
-    public LandingStrip(double sizeCapacity, String name, int airplaneCapacity) {
-        this.sizeCapacity = sizeCapacity;
+    public LandingStrip(double minimun, String name, int maximun, boolean disponibility) {
+        this.minimunCapacity = minimun;
         this.name = name;
-        this.airplaneCapacity = airplaneCapacity;
+        this.maximunCapacity = maximun;
+        this.disponibility= disponibility;
     }
 
-    public double getSizeCapacity() {
-        return sizeCapacity;
+    public double getMinimunCapacity() {
+        return minimunCapacity;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAirplaneCapacity() {
-        return airplaneCapacity;
+    public int getMaximunCapacity() {
+        return maximunCapacity;
     }
 
-    public void setSizeCapacity(double sizeCapacity) {
-        this.sizeCapacity = sizeCapacity;
+    public void setMinimunCapacity(double minimunCapacity) {
+        this.minimunCapacity = minimunCapacity;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setAirplaneCapacity(int airplaneCapacity) {
-        this.airplaneCapacity = airplaneCapacity;
+    public void setMaximunCapacity(int maximunCapacity) {
+        this.maximunCapacity = maximunCapacity;
     }
     
     

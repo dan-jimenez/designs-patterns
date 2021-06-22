@@ -3,38 +3,71 @@ package controllerWindow;
 import java.io.*;
 import java.net.*;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 /**
  *
  * @author Danny Jimenez
+ * ControllerWindow is a client
  */
-public class ControllerWindow extends JFrame {
-    private Socket clientSocket;
-    private PrintWriter out;
-    private BufferedReader in;
+public class ControllerWindow extends JFrame implements Runnable{
+    
+    private Socket controllerWindowSocket;
+    private ObjectOutputStream output;
+    private ObjectInputStream input;
     public ControllerPanel mainPanel = new ControllerPanel();
+    private final String IP = "localhost";
+    private final int PORT = 6666;
+    private String message;
+    private boolean connected;
+    
+    public static Thread threadControllerWindow;
+    public static ControllerWindow controllerWindow;
+    
+    
     
     public ControllerWindow(){
         super("Controller Window");
+        
         initComponents();
     }
     
-    public void startConnection(String ip, int port) throws IOException {
-        clientSocket = new Socket(ip, port);
-        out = new PrintWriter(clientSocket.getOutputStream(), true);
-        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+    public void startConnection() throws IOException, ClassNotFoundException {
+        controllerWindowSocket = new Socket(IP, PORT);
+        System.out.println("Conectado a: " + IP + " en el puerto..." + PORT);
+        
+        
+        
+    }
+    public String messageReader() throws IOException, ClassNotFoundException{
+        input = new ObjectInputStream(controllerWindowSocket.getInputStream());        
+        
+        try{
+            message = (String) input.readObject();
+        }catch(IOException e){
+            System.out.println("Error desconocido con la recepción de mensajes del servidor");
+            connected = false;
+        }
+                
+        System.out.println(message);
+        return message;
+        
     }
 
-    public String sendMessage(String msg) throws IOException {
-        out.println(msg);
-        String resp = in.readLine();
-        return resp;
+    
+    public void translater(String message){
+        
+    }
+    public void sendMessage(String message) throws IOException {
+        output = new ObjectOutputStream(controllerWindowSocket.getOutputStream());
+        output.writeObject(message);
+        
     }
 
     public void stopConnection() throws IOException {
-        in.close();
-        out.close();
-        clientSocket.close();
+        input.close();
+        output.close();
+        controllerWindowSocket.close();
     }
     
     public void initComponents(){
@@ -46,5 +79,33 @@ public class ControllerWindow extends JFrame {
         this.pack();
         
     } 
+    
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ControllerWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
+        controllerWindow = new ControllerWindow();
+        threadControllerWindow = new Thread(controllerWindow);
+        threadControllerWindow.start();
+        
+        
+    }
+
+    @Override
+    public void run() {
+        connected = true;
+        while(connected){
+            controllerWindow.setVisible(connected);
+            try {
+                controllerWindow.startConnection();
+                translater(messageReader());
+            } catch (IOException | ClassNotFoundException ex) {
+            }
+            
+        }
+    }
     
 }

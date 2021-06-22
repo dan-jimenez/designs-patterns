@@ -1,12 +1,24 @@
 package flights;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
 /**
  *
  * @author Danny Jimenez
  */
-public class Flights {
+public class Flights extends Thread{
     private int stateFlight;
     private Airplane airplane;
+    private Socket flightSocket;
+    private ObjectOutputStream output;
+    private ObjectInputStream input;
+    private final String IP = "localhost";
+    private final int PORT = 6666;
+    private String message;
+    private boolean connected;
 
     public Flights(Airplane airplane, int stateFlight) {
         this.airplane = airplane;
@@ -52,6 +64,35 @@ public class Flights {
 
     public int getStateFlight() {
         return stateFlight;
+    }
+    public void startConnection() throws IOException, ClassNotFoundException {
+        flightSocket = new Socket(IP, PORT);
+        System.out.println("Conectado a: " + IP + " en el puerto..." + PORT);
+        
+        
+        
+    }
+    
+    
+    public void sendMessage(String message) throws IOException {
+        output = new ObjectOutputStream(flightSocket.getOutputStream());
+        output.writeObject(message);
+        
+    }
+
+    public void stopConnection() throws IOException {
+        input.close();
+        output.close();
+        flightSocket.close();
+    }
+    
+    public static void main(String[] args) {
+        
+    }
+
+    @Override
+    public void run() {
+        
     }
     
     

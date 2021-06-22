@@ -1,8 +1,8 @@
 package controllerWindow;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import javax.swing.ImageIcon;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -29,7 +29,36 @@ public class ControllerPanel extends JPanel {
     private void initComponents() {
 
         exitButton = new javax.swing.JButton();
+        title = new javax.swing.JLabel();
+        flight1 = new javax.swing.JTabbedPane();
+        pA1 = new javax.swing.JPanel();
+        iF1 = new javax.swing.JPanel();
+        PEaPA1 = new javax.swing.JPanel();
+        btnAsignarP1 = new javax.swing.JButton();
+        pista1 = new javax.swing.JTextField();
+        puerta1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        pE1 = new javax.swing.JPanel();
+        flight2 = new javax.swing.JTabbedPane();
+        iF2 = new javax.swing.JPanel();
+        pE2 = new javax.swing.JPanel();
+        pA2 = new javax.swing.JPanel();
+        PEaPA2 = new javax.swing.JPanel();
+        flight3 = new javax.swing.JTabbedPane();
+        iF3 = new javax.swing.JPanel();
+        pE3 = new javax.swing.JPanel();
+        pA3 = new javax.swing.JPanel();
+        PEaPA3 = new javax.swing.JPanel();
+        flight4 = new javax.swing.JTabbedPane();
+        iF4 = new javax.swing.JPanel();
+        pE4 = new javax.swing.JPanel();
+        pA4 = new javax.swing.JPanel();
+        PEaPA4 = new javax.swing.JPanel();
+        btnCharge = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(51, 51, 51));
+        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         setPreferredSize(new java.awt.Dimension(663, 758));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -42,12 +71,15 @@ public class ControllerPanel extends JPanel {
             }
         });
 
+        exitButton.setForeground(new java.awt.Color(102, 102, 102));
         exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
         exitButton.setMnemonic('x');
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("controllerWindow/Bundle"); // NOI18N
         exitButton.setText(bundle.getString("ControllerPanel.exitButton.text")); // NOI18N
         exitButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        exitButton.setBorderPainted(false);
         exitButton.setContentAreaFilled(false);
+        exitButton.setFocusPainted(false);
         exitButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exitBlack.png"))); // NOI18N
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,21 +87,330 @@ public class ControllerPanel extends JPanel {
             }
         });
 
+        title.setBackground(new java.awt.Color(102, 102, 102));
+        title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(255, 255, 255));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText(bundle.getString("ControllerPanel.title.text")); // NOI18N
+
+        flight1.setBackground(new java.awt.Color(204, 204, 204));
+        flight1.setPreferredSize(new java.awt.Dimension(642, 150));
+
+        pA1.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout pA1Layout = new javax.swing.GroupLayout(pA1);
+        pA1.setLayout(pA1Layout);
+        pA1Layout.setHorizontalGroup(
+            pA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        pA1Layout.setVerticalGroup(
+            pA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 117, Short.MAX_VALUE)
+        );
+
+        flight1.addTab(bundle.getString("ControllerPanel.pA1.TabConstraints.tabTitle"), pA1); // NOI18N
+
+        iF1.setBackground(new java.awt.Color(153, 153, 153));
+
+        javax.swing.GroupLayout iF1Layout = new javax.swing.GroupLayout(iF1);
+        iF1.setLayout(iF1Layout);
+        iF1Layout.setHorizontalGroup(
+            iF1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        iF1Layout.setVerticalGroup(
+            iF1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 117, Short.MAX_VALUE)
+        );
+
+        flight1.addTab(bundle.getString("ControllerPanel.iF1.TabConstraints.tabTitle"), iF1); // NOI18N
+
+        PEaPA1.setBackground(new java.awt.Color(153, 153, 153));
+
+        btnAsignarP1.setText(bundle.getString("ControllerPanel.btnAsignarP1.text")); // NOI18N
+        btnAsignarP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsignarP1ActionPerformed(evt);
+            }
+        });
+
+        pista1.setText(bundle.getString("ControllerPanel.pista1.text")); // NOI18N
+        pista1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pista1ActionPerformed(evt);
+            }
+        });
+
+        puerta1.setText(bundle.getString("ControllerPanel.puerta1.text")); // NOI18N
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText(bundle.getString("ControllerPanel.jLabel1.text")); // NOI18N
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText(bundle.getString("ControllerPanel.jLabel2.text")); // NOI18N
+
+        javax.swing.GroupLayout PEaPA1Layout = new javax.swing.GroupLayout(PEaPA1);
+        PEaPA1.setLayout(PEaPA1Layout);
+        PEaPA1Layout.setHorizontalGroup(
+            PEaPA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PEaPA1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PEaPA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(pista1))
+                .addGap(51, 51, 51)
+                .addGroup(PEaPA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(puerta1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(btnAsignarP1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(225, Short.MAX_VALUE))
+        );
+        PEaPA1Layout.setVerticalGroup(
+            PEaPA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PEaPA1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(PEaPA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PEaPA1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(puerta1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAsignarP1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pista1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+
+        flight1.addTab(bundle.getString("ControllerPanel.PEaPA1.TabConstraints.tabTitle"), PEaPA1); // NOI18N
+
+        pE1.setBackground(new java.awt.Color(153, 153, 153));
+        pE1.setPreferredSize(new java.awt.Dimension(627, 115));
+
+        javax.swing.GroupLayout pE1Layout = new javax.swing.GroupLayout(pE1);
+        pE1.setLayout(pE1Layout);
+        pE1Layout.setHorizontalGroup(
+            pE1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        pE1Layout.setVerticalGroup(
+            pE1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 117, Short.MAX_VALUE)
+        );
+
+        flight1.addTab(bundle.getString("ControllerPanel.pE1.TabConstraints.tabTitle"), pE1); // NOI18N
+
+        flight2.setPreferredSize(new java.awt.Dimension(642, 150));
+
+        javax.swing.GroupLayout iF2Layout = new javax.swing.GroupLayout(iF2);
+        iF2.setLayout(iF2Layout);
+        iF2Layout.setHorizontalGroup(
+            iF2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 634, Short.MAX_VALUE)
+        );
+        iF2Layout.setVerticalGroup(
+            iF2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 122, Short.MAX_VALUE)
+        );
+
+        flight2.addTab(bundle.getString("ControllerPanel.iF2.TabConstraints.tabTitle"), iF2); // NOI18N
+
+        javax.swing.GroupLayout pE2Layout = new javax.swing.GroupLayout(pE2);
+        pE2.setLayout(pE2Layout);
+        pE2Layout.setHorizontalGroup(
+            pE2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        pE2Layout.setVerticalGroup(
+            pE2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 117, Short.MAX_VALUE)
+        );
+
+        flight2.addTab(bundle.getString("ControllerPanel.pE2.TabConstraints.tabTitle"), pE2); // NOI18N
+
+        javax.swing.GroupLayout pA2Layout = new javax.swing.GroupLayout(pA2);
+        pA2.setLayout(pA2Layout);
+        pA2Layout.setHorizontalGroup(
+            pA2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        pA2Layout.setVerticalGroup(
+            pA2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 117, Short.MAX_VALUE)
+        );
+
+        flight2.addTab(bundle.getString("ControllerPanel.pA2.TabConstraints.tabTitle"), pA2); // NOI18N
+
+        PEaPA2.setPreferredSize(new java.awt.Dimension(634, 115));
+
+        javax.swing.GroupLayout PEaPA2Layout = new javax.swing.GroupLayout(PEaPA2);
+        PEaPA2.setLayout(PEaPA2Layout);
+        PEaPA2Layout.setHorizontalGroup(
+            PEaPA2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 634, Short.MAX_VALUE)
+        );
+        PEaPA2Layout.setVerticalGroup(
+            PEaPA2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 122, Short.MAX_VALUE)
+        );
+
+        flight2.addTab(bundle.getString("ControllerPanel.PEaPA2.TabConstraints.tabTitle"), PEaPA2); // NOI18N
+
+        flight3.setPreferredSize(new java.awt.Dimension(642, 150));
+
+        javax.swing.GroupLayout iF3Layout = new javax.swing.GroupLayout(iF3);
+        iF3.setLayout(iF3Layout);
+        iF3Layout.setHorizontalGroup(
+            iF3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        iF3Layout.setVerticalGroup(
+            iF3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
+        );
+
+        flight3.addTab(bundle.getString("ControllerPanel.iF3.TabConstraints.tabTitle"), iF3); // NOI18N
+
+        javax.swing.GroupLayout pE3Layout = new javax.swing.GroupLayout(pE3);
+        pE3.setLayout(pE3Layout);
+        pE3Layout.setHorizontalGroup(
+            pE3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        pE3Layout.setVerticalGroup(
+            pE3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
+        );
+
+        flight3.addTab(bundle.getString("ControllerPanel.pE3.TabConstraints.tabTitle"), pE3); // NOI18N
+
+        javax.swing.GroupLayout pA3Layout = new javax.swing.GroupLayout(pA3);
+        pA3.setLayout(pA3Layout);
+        pA3Layout.setHorizontalGroup(
+            pA3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        pA3Layout.setVerticalGroup(
+            pA3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
+        );
+
+        flight3.addTab(bundle.getString("ControllerPanel.pA3.TabConstraints.tabTitle"), pA3); // NOI18N
+
+        PEaPA3.setPreferredSize(new java.awt.Dimension(634, 115));
+
+        javax.swing.GroupLayout PEaPA3Layout = new javax.swing.GroupLayout(PEaPA3);
+        PEaPA3.setLayout(PEaPA3Layout);
+        PEaPA3Layout.setHorizontalGroup(
+            PEaPA3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 634, Short.MAX_VALUE)
+        );
+        PEaPA3Layout.setVerticalGroup(
+            PEaPA3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 121, Short.MAX_VALUE)
+        );
+
+        flight3.addTab(bundle.getString("ControllerPanel.PEaPA3.TabConstraints.tabTitle"), PEaPA3); // NOI18N
+
+        flight4.setMinimumSize(new java.awt.Dimension(189, 150));
+
+        javax.swing.GroupLayout iF4Layout = new javax.swing.GroupLayout(iF4);
+        iF4.setLayout(iF4Layout);
+        iF4Layout.setHorizontalGroup(
+            iF4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        iF4Layout.setVerticalGroup(
+            iF4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 115, Short.MAX_VALUE)
+        );
+
+        flight4.addTab(bundle.getString("ControllerPanel.iF4.TabConstraints.tabTitle"), iF4); // NOI18N
+
+        javax.swing.GroupLayout pE4Layout = new javax.swing.GroupLayout(pE4);
+        pE4.setLayout(pE4Layout);
+        pE4Layout.setHorizontalGroup(
+            pE4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        pE4Layout.setVerticalGroup(
+            pE4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 115, Short.MAX_VALUE)
+        );
+
+        flight4.addTab(bundle.getString("ControllerPanel.pE4.TabConstraints.tabTitle"), pE4); // NOI18N
+
+        javax.swing.GroupLayout pA4Layout = new javax.swing.GroupLayout(pA4);
+        pA4.setLayout(pA4Layout);
+        pA4Layout.setHorizontalGroup(
+            pA4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        pA4Layout.setVerticalGroup(
+            pA4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 115, Short.MAX_VALUE)
+        );
+
+        flight4.addTab(bundle.getString("ControllerPanel.pA4.TabConstraints.tabTitle"), pA4); // NOI18N
+
+        PEaPA4.setPreferredSize(new java.awt.Dimension(634, 115));
+
+        javax.swing.GroupLayout PEaPA4Layout = new javax.swing.GroupLayout(PEaPA4);
+        PEaPA4.setLayout(PEaPA4Layout);
+        PEaPA4Layout.setHorizontalGroup(
+            PEaPA4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 634, Short.MAX_VALUE)
+        );
+        PEaPA4Layout.setVerticalGroup(
+            PEaPA4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 115, Short.MAX_VALUE)
+        );
+
+        flight4.addTab(bundle.getString("ControllerPanel.PEaPA4.TabConstraints.tabTitle"), PEaPA4); // NOI18N
+
+        btnCharge.setText(bundle.getString("ControllerPanel.btnCharge.text")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(623, Short.MAX_VALUE)
-                .addComponent(exitButton)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCharge)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(title)
+                        .addGap(188, 188, 188)
+                        .addComponent(exitButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(flight4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(flight2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(flight1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(flight3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(exitButton)
-                .addContainerGap(718, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCharge))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(flight1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(flight2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(flight3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(flight4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
     }// </editor-fold>//GEN-END:initComponents
     int xx, yy;
@@ -82,13 +423,34 @@ public class ControllerPanel extends JPanel {
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         
-        Main.controllerWindow.setLocation(x-xx,y-yy);
+        ControllerWindow.controllerWindow.setLocation(x-xx,y-yy);
     }//GEN-LAST:event_formMouseDragged
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void btnAsignarP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarP1ActionPerformed
+        String message;
+        message = pista1.getText();
+        try {
+            ControllerWindow.controllerWindow.sendMessage(message);
+            Thread.sleep(2*1000);
+            message = puerta1.getText();
+            ControllerWindow.controllerWindow.sendMessage(message);
+        } catch (IOException | InterruptedException ex) {
+            Logger.getLogger(ControllerPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_btnAsignarP1ActionPerformed
+
+    private void pista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pista1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pista1ActionPerformed
     
+    
+    /*
     @Override
     public void paint(Graphics g){
         Dimension dimension = this.getSize();
@@ -98,8 +460,37 @@ public class ControllerPanel extends JPanel {
         super.paintChildren(g);
         
     }
+    
+    */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel PEaPA1;
+    public javax.swing.JPanel PEaPA2;
+    public javax.swing.JPanel PEaPA3;
+    public javax.swing.JPanel PEaPA4;
+    public javax.swing.JButton btnAsignarP1;
+    public javax.swing.JButton btnCharge;
     public javax.swing.JButton exitButton;
+    public javax.swing.JTabbedPane flight1;
+    public javax.swing.JTabbedPane flight2;
+    public javax.swing.JTabbedPane flight3;
+    public javax.swing.JTabbedPane flight4;
+    public javax.swing.JPanel iF1;
+    public javax.swing.JPanel iF2;
+    public javax.swing.JPanel iF3;
+    public javax.swing.JPanel iF4;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JPanel pA1;
+    public javax.swing.JPanel pA2;
+    public javax.swing.JPanel pA3;
+    public javax.swing.JPanel pA4;
+    public javax.swing.JPanel pE1;
+    public javax.swing.JPanel pE2;
+    public javax.swing.JPanel pE3;
+    public javax.swing.JPanel pE4;
+    public javax.swing.JTextField pista1;
+    public javax.swing.JTextField puerta1;
+    public javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
